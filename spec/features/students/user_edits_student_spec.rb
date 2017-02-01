@@ -36,7 +36,7 @@ feature 'User edits student' do
 
     visit students_path
     find(:xpath, "//a[@title='edit']").click
-    find("input[type='checkbox']").set(true)
+    find("input[class='check_boxes optional']").set(true)
     click_button 'Update Student'
 
     visit report_subjects_path

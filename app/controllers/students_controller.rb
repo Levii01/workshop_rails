@@ -4,9 +4,11 @@ class StudentsController < ApplicationController
   expose(:student, attributes: :student_params)
   expose(:subject_items)
   expose(:student_subject_items) { student.subject_items }
+  expose(:accepts)
 
 
   def create
+    student.birth_date = nil unless student_params[:selected_date]=="true"
     if student.save
       redirect_to student_path(student), notice: I18n.t('shared.created', resource: 'Student')
     else
@@ -15,6 +17,7 @@ class StudentsController < ApplicationController
   end
 
   def update
+    student.birth_date = nil unless student_params[:selected_date]=="true"
     if student.save
       redirect_to student_path(student), notice: I18n.t('shared.updated', resource: 'Student')
     else
@@ -30,6 +33,6 @@ class StudentsController < ApplicationController
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, subject_item_ids: [] )
+    params.require(:student).permit(:first_name, :last_name, :birth_date, :selected_date, subject_item_ids: [] )
   end
 end
