@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170201222506) do
   add_index "participations", ["subject_item_id"], name: "index_participations_on_subject_item_id", using: :btree
 
   create_table "payments", force: :cascade do |t|
-    t.datetime "payment_date"
+    t.datetime "payment_date", null: false
     t.integer  "student_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
