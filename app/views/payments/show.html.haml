@@ -1,12 +1,12 @@
-- breadcrumb :payment, payment, students
+- breadcrumb :payment, payment
 %table.table.table-condensed
   %tbody
     %tr
       %th= t('payments.columns.first_name')
-      %td= students.find(payment.student_id).first_name
+      %td= payment.student.first_name
     %tr
       %th= t('payments.columns.last_name')
-      %td= students.find(payment.student_id).last_name
+      %td= payment.student.last_name
     %tr
       %th= t('payments.columns.payment_date')
       %td= payment.payment_date
