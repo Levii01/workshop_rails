@@ -33,3 +33,13 @@ end
 crumb :subjects do
   link t('navbar.reports_subjects'), report_subjects_path
 end
+
+crumb :payments do
+  link t('navbar.payments'), payments_path
+end
+
+crumb :payment do |payment|
+  link "#{students.find(payment.student_id).first_name} "+"
+  #{students.find(payment.student_id).last_name}", payment_path(payment)
+  parent :payments
+end
