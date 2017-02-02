@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :payments
+  get 'payment/month', to: 'payments#month'
+
   devise_for :users
   resources :students do
     get :subjects
