@@ -1,0 +1,16 @@
+- payments.each do |payment|
+  %tr
+    %td= students.find(payment.student_id).first_name
+    %td= students.find(payment.student_id).last_name
+    %td= payment.student_id
+    %td= payment.payment_date
+    %td
+      = link_to payment_path(payment), { title: t('shared.show') } do
+        %button.btn.btn-default
+          = fa_icon "search"
+      = link_to edit_payment_path(payment), { title: t('shared.edit') } do
+        %button.btn.btn-default
+          = fa_icon "edit"
+      = link_to payment_path(payment), { method: :delete, title: t('shared.delete') } do
+        %button.btn.btn-default
+          = fa_icon "times"

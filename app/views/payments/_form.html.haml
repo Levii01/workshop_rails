@@ -1,9 +1,11 @@
-= simple_form_for(@payment) do |f|
+= simple_form_for payment do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :payment_date
+    = f.input :payment_date, as: :date, start_year: Date.today.year - 1,
+                              end_year: Date.today.year,
+                              order: [:month, :day]
     = f.input :student_id
-
   .form-actions
+    = link_to t('shared.back'), payments_path, class: 'btn btn-default'
     = f.button :submit

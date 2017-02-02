@@ -34,3 +34,9 @@ en:
       full_name: Full name
       avg_notes: Notes avarange
       date_of_birth: Date of birth
+  payments:
+    columns:
+      payment_date: date of payment
+      student_id: student ID
+      first_name: first name
+      last_name: last name

@@ -4,8 +4,6 @@ class StudentsController < ApplicationController
   expose(:student, attributes: :student_params)
   expose(:subject_items)
   expose(:student_subject_items) { student.subject_items }
-  expose(:accepts)
-
 
   def create
     student.birth_date = nil unless student_params[:selected_date]=="true"

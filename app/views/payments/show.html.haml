@@ -1,12 +1,16 @@
-%p#notice= notice
+%table.table.table-condensed
+  %tbody
+    %tr
+      %th= t('payments.columns.first_name')
+      %td= students.find(payment.student_id).first_name
+    %tr
+      %th= t('payments.columns.last_name')
+      %td= students.find(payment.student_id).last_name
+    %tr
+      %th= t('payments.columns.payment_date')
+      %td= payment.payment_date
+    %tr
+      %th= t('payments.columns.student_id')
+      %td= payment.student_id
 
-%p
-  %b Payment date:
-  = @payment.payment_date
-%p
-  %b Student:
-  = @payment.student_id
-
-= link_to 'Edit', edit_payment_path(@payment)
-\|
-= link_to 'Back', payments_path
+= link_to t('shared.back'), payments_path, class: 'btn btn-default'
