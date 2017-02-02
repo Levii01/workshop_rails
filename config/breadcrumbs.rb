@@ -43,3 +43,7 @@ crumb :payment do |payment|
   #{students.find(payment.student_id).last_name}", payment_path(payment)
   parent :payments
 end
+
+New table which check students payments in this month
+
+If student dont paid for their tuition, in columns 'done' will display 'false'

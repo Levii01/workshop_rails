@@ -42,3 +42,8 @@ en:
       first_name: first name
       last_name: last name
       month: month
+      done: done
+      no_date: no date
+  table:
+    monthly: Monthly payment
+    all: All payment

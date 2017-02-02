@@ -1,5 +1,24 @@
 - breadcrumb :payments
 = link_to t('shared.add_new_item'), new_payment_path, class: 'btn btn-default'
+%h1= t('table.monthly')
+
+%table.table.table-condensed
+  %thead
+    %tr
+      %th= t('payments.columns.student_id')
+      %th= t('payments.columns.first_name')
+      %th= t('payments.columns.last_name')
+      %th= t('payments.columns.done')
+      %th= t('payments.columns.month')
+      %th= t('payments.columns.payment_date')
+  %tbody
+    = render partial: 'monthly_payment', locals: { monthly_payment: payment }
+
+
+
+%h1= t('table.all')
+
+
 %table.table.table-condensed
   %thead
     %tr
