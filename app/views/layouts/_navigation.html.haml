@@ -18,10 +18,17 @@
             = t('navbar.reports')
             %span.caret
           %ul.dropdown-menu
-            %li{ class: active?(report_subjects_path) }
+            %li{ class: active?(payments_path) }
               = link_to t('navbar.reports_subjects'), report_subjects_path
-          %li{ class: active?(payments_path) }
-            = link_to t('navbar.payments'), payments_path
+        %li.dropdown{ class: active?(payments_path) || active?(payment_month_path)  }
+          = link_to '#', class: 'dropdown-toggle', 'aria-expanded' => 'false', 'aria-haspopup' => 'true', 'data-toggle' => 'dropdown', role: 'button' do
+            = t('navbar.payments')
+            %span.caret
+          %ul.dropdown-menu
+            %li{ class: active?(payment_month_path) }
+              = link_to t('navbar.monthly'), payment_month_path
+            %li{ class: active?(payments_path) }
+              = link_to t('navbar.all'), payments_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li

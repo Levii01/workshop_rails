@@ -4,6 +4,8 @@ en:
     teachers: Teachers
     reports: Reports
     payments: Payments
+    monthly: Monthly
+    all: All
     reports_subjects: Subjects
     logout: Logout
     signin: Sign in
