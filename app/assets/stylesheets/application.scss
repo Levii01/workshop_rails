@@ -12,5 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require_jquery.ui.core
+ *= require_jquery.ui.theme
+ *= require dataTables/jquery.dataTables
  *= require font-awesome
  */

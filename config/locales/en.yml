@@ -45,5 +45,5 @@ en:
       done: done
       no_date: no date
   table:
-    monthly: Monthly payment
-    all: All payment
+    monthly: Monthly payments
+    all: All payments
