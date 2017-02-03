@@ -4,6 +4,7 @@ RSpec.describe Payment, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of :payment_date }
     it { is_expected.to validate_presence_of :student_id }
+    it { is_expected.to validate_presence_of :student }
   end
 
   describe 'database columns' do

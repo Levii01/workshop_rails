@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :payment do
-    payment_date "2017-02-01 23:25:06"
-student_id 1
+    payment_date { Faker::Date.forward(23) }
+    student_id { FactoryGirl.create(:student).id }
   end
 
 end
