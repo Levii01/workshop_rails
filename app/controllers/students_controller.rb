@@ -6,7 +6,6 @@ class StudentsController < ApplicationController
   expose(:student_subject_items) { student.subject_items }
 
   def create
-    student.birth_date = nil unless student_params[:selected_date]=="true"
     if student.save
       redirect_to student_path(student), notice: I18n.t('shared.created', resource: 'Student')
     else
@@ -15,7 +14,6 @@ class StudentsController < ApplicationController
   end
 
   def update
-    student.birth_date = nil unless student_params[:selected_date]=="true"
     if student.save
       redirect_to student_path(student), notice: I18n.t('shared.updated', resource: 'Student')
     else

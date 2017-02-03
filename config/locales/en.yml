@@ -27,6 +27,7 @@ en:
       first_name: first name
       last_name: last name
       birth_date: date of birth
+      birth: Birth date
   teacher:
     columns:
       first_name: first name
