@@ -3,6 +3,7 @@ require 'rails_helper'
 describe StudentDecorator do
   let(:teacher) { create :teacher, first_name: 'John', last_name: 'Smith' }
   let(:student) { create :student, first_name: 'John', last_name: 'Smith' }
+  let(:another_student) { create :student, birth_date: '2017-02-03 18:36:02' }
   let(:subject_item) { create :subject_item, teacher: teacher }
   let(:second_subject_item) { create :subject_item }
   let!(:note_1) { create :subject_item_note, value: 5, student: student, subject_item: second_subject_item }
@@ -11,6 +12,18 @@ describe StudentDecorator do
   describe "#full_name" do
     subject { student.decorate.full_name }
     it { is_expected.to eq 'John Smith' }
+  end
+
+  describe "#date_of_birth" do
+    describe "when date of birth exist" do
+      subject { student.decorate.date_of_birth }
+      it { is_expected.to eq("No information") }
+    end
+
+    describe "when date of birth not exist" do
+      subject { another_student.decorate.date_of_birth }
+      it { is_expected.to eq('2017-02_03') }
+    end
   end
 
   describe "#avg_notes" do
