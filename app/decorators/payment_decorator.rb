@@ -14,7 +14,7 @@ class PaymentDecorator < Draper::Decorator
   end
 
   def find_date(student)
-    find(student ,"%Y.%m.%d")
+    return find(student ,"%Y.%m.%d")
   end
 
   def find_months(student)
@@ -31,7 +31,7 @@ class PaymentDecorator < Draper::Decorator
     if check_payment_month(this_student)
       this_student.payments
         .find_by(payment_date: Date.current.at_beginning_of_month..Date.current.at_end_of_month)
-        .payment_date.strftime(format_date) if check_payment_month(this_student)
+        .payment_date.strftime(format_date)
     else
       return I18n.t('payments.columns.no_date')
     end
