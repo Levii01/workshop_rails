@@ -56,11 +56,12 @@ RSpec.describe StudentsController do
   end
 
   describe 'PUT #update' do
-    let!(:student) { create :student, first_name: 'John', last_name: 'Smith' }
+    let!(:student) { create :student, first_name: 'John', last_name: 'Smith', birth_date: '1972-02-03 10:40:16'}
     let(:first_name) { 'Walter' }
     let(:last_name) { 'White' }
+    let(:birth_date) { '1982-02-03 10:40:16 UTC' }
     let!(:params) do
-      { id: student.id, student: { first_name: first_name } }
+      { id: student.id, student: { first_name: first_name, last_name: last_name , birth_date: birth_date } }
     end
     subject { put :update, params }
 
@@ -75,6 +76,22 @@ RSpec.describe StudentsController do
       context 'updates student' do
         subject { -> { put :update, params } }
         it { is_expected.to change{ student.reload.first_name }.to(first_name) }
+        it { is_expected.to change{ student.reload.last_name }.to(last_name) }
+        it { is_expected.to change{ student.reload.birth_date.utc.to_s }.to( birth_date ) }
+      end
+
+      context 'updates student without birth data' do
+        let(:stu) { create :student }
+        let(:empty_date) { nil }
+        let!(:params) do
+          { id: student.id, student: { first_name: stu.first_name,
+             last_name: stu.last_name, birth_date: empty_date } }
+        end
+
+        subject { -> { put :update, params } }
+        it { is_expected.to change{ student.reload.first_name }.to(stu.first_name) }
+        it { is_expected.to change{ student.reload.last_name }.to(stu.last_name) }
+        it { is_expected.to change{ student.reload.birth_date }.to( empty_date ) }
       end
     end
 
