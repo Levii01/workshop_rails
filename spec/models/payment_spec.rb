@@ -5,6 +5,19 @@ RSpec.describe Payment, type: :model do
     it { is_expected.to validate_presence_of :payment_date }
     it { is_expected.to validate_presence_of :student_id }
     it { is_expected.to validate_presence_of :student }
+
+    context 'validation payment' do
+      let!(:payment) { create :payment }
+      subject { build :payment, payment.attributes }
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'no validation payment' do
+      let!(:payment) { create :payment }
+
+      it { is_expected.to_not be_valid }
+    end
   end
 
   describe 'database columns' do

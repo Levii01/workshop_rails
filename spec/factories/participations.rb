@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :participation do
-    student
-    subject_item
+    student { FactoryGirl.create(:student) }
+    subject_item { FactoryGirl.create(:subject_item) }
   end
 end

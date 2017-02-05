@@ -6,6 +6,22 @@ RSpec.describe Teacher do
     it { is_expected.to validate_presence_of :last_name }
     it { is_expected.to validate_presence_of :academic_title }
     it { is_expected.to validate_inclusion_of(:academic_title).in_array(Teacher::TITLES) }
+
+    context 'no vaildation teacher' do
+      let!(:teacher) { create :teacher }
+      it { is_expected.to_not be_valid }
+    end
+
+    context 'no vaildation teacher' do
+      let!(:teacher) { create :teacher }
+      it { is_expected.to_not be_valid }
+    end
+
+    context 'vaildation teacher' do
+      let!(:teacher) { create :teacher }
+      subject { build :teacher, teacher.attributes }
+      it { is_expected.to be_valid }
+    end
   end
 
   describe 'database columns' do

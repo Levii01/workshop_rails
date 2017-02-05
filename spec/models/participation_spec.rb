@@ -5,9 +5,15 @@ RSpec.describe Participation do
     it { is_expected.to validate_presence_of :student }
     it { is_expected.to validate_presence_of :subject_item }
 
-    context 'uniqueness of the student-subject_item pair' do
+    context 'validation student-subject_item' do
       let!(:participation) { create :participation }
       subject { build :participation, participation.attributes }
+
+      it { is_expected.to_not be_valid }
+    end
+
+    context 'uniqueness of the student-subject_item pair' do
+      let!(:participation) { create :participation }
 
       it { is_expected.to_not be_valid }
     end

@@ -4,6 +4,19 @@ RSpec.describe Student do
   describe 'validations' do
     it { is_expected.to validate_presence_of :first_name }
     it { is_expected.to validate_presence_of :last_name }
+
+    context 'vaildation student' do
+      let!(:student) { create :student }
+      subject { build :student, student.attributes }
+
+      it { is_expected.to be_valid }
+    end
+
+    context 'no vaildation student' do
+      let!(:student) { create :student }
+
+      it { is_expected.to_not be_valid }
+    end
   end
 
   describe 'database columns' do
