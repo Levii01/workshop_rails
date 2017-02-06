@@ -9,7 +9,7 @@
       %td= payment.student.last_name
     %tr
       %th= t('payments.columns.payment_date')
-      %td= payment.payment_date
+      %td= payment.decorate.date_of_payment
     %tr
       %th= t('payments.columns.student_id')
       %td= payment.student_id
